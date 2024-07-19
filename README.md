@@ -1,6 +1,13 @@
-# codealpha_task1
+Name: Hemant Baghel
+Company: CODE ALPHA
+ID: CA/JL1/20299
+Domain: C++ programming 
+Duration: 15 July to 15 August
+ 
 
-Here's an explanation of the CGPA calculator program in C++ provided:
+Overview of the Project
+
+Project: Creating a cgpa calculator using C++ programming
 
 Objective:
 The objective of this CGPA calculator program is to compute the Cumulative Grade Point Average (CGPA) based on the grades and credit hours of courses taken over multiple semesters. It allows users to input course details such as name, credits, and grade, calculates the GPA for each semester, and finally computes the CGPA from these GPAs.
