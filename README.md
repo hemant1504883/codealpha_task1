@@ -149,7 +149,7 @@ int main() {
 }
 
 Output:
-![image](https://github.com/user-attachments/assets/cd20121a-02c8-435c-8cdd-a27da65f39c8)
+
 
 
 
