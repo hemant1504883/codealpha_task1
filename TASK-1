@@ -1,0 +1,114 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to represent a course
+struct Course {
+    string name;
+    int credits;
+    char grade;
+};
+
+// Function to calculate GPA for a semester
+double calculateGPA(vector<Course> courses) {
+    double totalCredits = 0.0;
+    double totalGradePoints = 0.0;
+
+    for (Course course : courses) {
+        totalCredits += course.credits;
+
+        switch (course.grade) {
+            case 'A':
+                totalGradePoints += course.credits * 4.0;
+                break;
+            case 'B':
+                totalGradePoints += course.credits * 3.0;
+                break;
+            case 'C':
+                totalGradePoints += course.credits * 2.0;
+                break;
+            case 'D':
+                totalGradePoints += course.credits * 1.0;
+                break;
+            case 'F':
+                totalGradePoints += course.credits * 0.0;
+                break;
+            default:
+                cout << "Invalid grade." << endl;
+                return 0.0;
+        }
+    }
+
+    return totalGradePoints / totalCredits;
+}
+
+// Function to calculate CGPA
+double calculateCGPA(vector<double> gpas) {
+    double totalGPA = 0.0;
+
+    for (double gpa : gpas) {
+        totalGPA += gpa;
+    }
+
+    return totalGPA / gpas.size();
+}
+
+int main() {
+    int numCourses;
+    vector<Course> courses;
+    vector<double> gpas;
+
+    cout << "Enter the number of courses: ";
+    cin >> numCourses;
+
+    for (int i = 0; i < numCourses; i++) {
+        Course course;
+        cout << "Enter course name: ";
+        cin >> course.name;
+        cout << "Enter course credits: ";
+        cin >> course.credits;
+        cout << "Enter course grade: ";
+        cin >> course.grade;
+
+        courses.push_back(course);
+    }
+
+    double gpa = calculateGPA(courses);
+    cout << "GPA for this semester: " << gpa << endl;
+    gpas.push_back(gpa);
+
+    char response;
+    cout << "Do you want to add more semesters? (y/n): ";
+    cin >> response;
+
+    while (response == 'y') {
+        courses.clear();
+        cout << "Enter the number of courses: ";
+        cin >> numCourses;
+
+        for (int i = 0; i < numCourses; i++) {
+            Course course;
+            cout << "Enter course name: ";
+            cin >> course.name;
+            cout << "Enter course credits: ";
+            cin >> course.credits;
+            cout << "Enter course grade: ";
+            cin >> course.grade;
+
+            courses.push_back(course);
+        }
+
+        gpa = calculateGPA(courses);
+        cout << "GPA for this semester: " << gpa << endl;
+        gpas.push_back(gpa);
+        cout << "Do you want to add more semesters? (y/n): ";
+        cin >> response;
+    }
+
+    double cgpa = calculateCGPA(gpas);
+    cout << "CGPA: " << cgpa << endl;
+
+    return 0;
+}
